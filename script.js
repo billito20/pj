@@ -1,16 +1,13 @@
 // Dark mode toggle with transitions for smoother experience
 const themeToggle = document.getElementById('theme-toggle');
-
-// Apply saved theme from localStorage
 document.body.classList.add('transition'); // Smooth transition for theme toggle
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
-    themeToggle.textContent = 'Light Mode';  // Set the button text to Light Mode
+    themeToggle.textContent = 'Light Mode';  
 } else {
-    themeToggle.textContent = 'Dark Mode';  // Default button text
+    themeToggle.textContent = 'Dark Mode';  
 }
 
-// Event listener for theme toggle with debounce for responsiveness
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
@@ -22,26 +19,24 @@ const modal = document.getElementById('book-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDescription = document.getElementById('modal-description');
 
-// Open modal with content and smooth fade-in
 function openModal(title, description) {
     modalTitle.textContent = title;
     modalDescription.textContent = description;
-    modal.style.opacity = '0';  // Start with hidden
+    modal.style.opacity = '0'; 
     modal.style.display = 'block';
     setTimeout(() => {
-        modal.style.opacity = '1'; // Animate opacity to visible
+        modal.style.opacity = '1';
+        modal.focus(); // Set focus on the modal
     }, 10);
 }
 
-// Close modal with fade-out
 function closeModal() {
     modal.style.opacity = '0';
     setTimeout(() => {
-        modal.style.display = 'none';  // Hide after fade-out
+        modal.style.display = 'none';  
     }, 300);
 }
 
-// Close modal when clicking outside of it
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
         closeModal();
@@ -53,16 +48,14 @@ const carouselImages = ['Assets/image 130.png', 'Assets/image 127.png', 'Assets/
 let currentIndex = 0;
 const carouselImg = document.getElementById('carousel-img');
 
-// Function to smoothly change the carousel image
 function updateCarousel() {
     carouselImg.style.opacity = '0';
     setTimeout(() => {
         carouselImg.src = carouselImages[currentIndex];
-        carouselImg.style.opacity = '1';  // Fade-in effect
-    }, 300); // Wait for fade-out before changing image
+        carouselImg.style.opacity = '1'; 
+    }, 300);
 }
 
-// Debounce function to prevent spamming clicks
 function debounce(func, delay = 200) {
     let timeout;
     return function () {
@@ -71,7 +64,6 @@ function debounce(func, delay = 200) {
     };
 }
 
-// Carousel navigation event listeners with debounce for responsiveness
 document.getElementById('next-btn').addEventListener('click', debounce(() => {
     currentIndex = (currentIndex + 1) % carouselImages.length;
     updateCarousel();
@@ -87,21 +79,18 @@ const emailInput = document.getElementById('email');
 const message = document.getElementById('message');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Validate email in real-time as the user types
 emailInput.addEventListener('input', () => {
     const trimmedEmail = emailInput.value.trim();
     if (trimmedEmail && !emailRegex.test(trimmedEmail)) {
         message.textContent = 'Please enter a valid email address.';
         message.style.color = 'red';
     } else {
-        message.textContent = '';  // Clear message if valid
+        message.textContent = ''; 
     }
 });
 
-// Subscribe function with immediate feedback and debounce
 const subscribe = debounce(() => {
     const trimmedEmail = emailInput.value.trim();
-
     if (trimmedEmail === '') {
         message.textContent = 'Email field cannot be empty.';
         message.style.color = 'red';
@@ -111,10 +100,8 @@ const subscribe = debounce(() => {
     } else {
         message.textContent = 'Thank you for subscribing!';
         message.style.color = 'green';
-        emailInput.value = '';  // Clear the input after subscription
+        emailInput.value = '';  
     }
 });
 
-// Subscribe button event listener
 document.getElementById('subscribe-btn').addEventListener('click', subscribe);
-

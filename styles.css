@@ -10,6 +10,7 @@ body {
     color: black; /* Light mode text color */
     font-family: Arial, sans-serif;
 }
+
 /* Header Styles */
 .header {
     background-color: #222; /* Dark background for header */
@@ -53,11 +54,13 @@ body {
     color: #222; /* Dark color for nav links for contrast */
     text-decoration: none;
     padding: 5px 10px;
+    transition: transform 0.2s ease; /* Animation for nav links */
 }
 
 .navbar ul li a:hover {
     background-color: #ddd; /* Light gray background on hover */
     border-radius: 5px;
+    transform: scale(1.1); /* Slightly scale up on hover */
 }
 
 /* New styles for icons in the navbar */
@@ -165,9 +168,11 @@ body {
 
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Even distribution */
+    gap: 20px; /* Space between grid items */
     padding: 20px;
+    margin: 0 auto; /* Center the grid container */
+    justify-items: center; /* Center items in each grid cell */
 }
 
 .book-item {
@@ -175,36 +180,38 @@ body {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-}
-
-.book-item:hover {
-    transform: scale(1.05);
+    align-items: center; /* Center-align content */
+    text-align: center; /* Center text for titles and descriptions */
 }
 
 .book-item img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 8px; /* Rounded corners for book images */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .book-info {
     width: 100%; 
-    text-align: left; 
+    text-align: center; /* Center-align text in the info section */
 }
 
 .book-item p {
-    margin: 0; 
+    margin: 5px 0; /* Add margin for spacing between paragraphs */
     font-size: 0.85rem; 
     font-weight: normal; 
-    text-align: left; 
-    line-height: 1; 
-    padding-top: 2px; 
+    line-height: 1.2; /* Improved line spacing */
 }
 
-.book-item p + p {
-    margin-top: 3px; 
-}
+/* Optional: Add media queries for responsiveness */
+@media (max-width: 600px) {
+    .books-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* More compact layout on smaller screens */
+    }
 
+    .book-item p {
+        font-size: 0.75rem; /* Smaller text size for better fit */
+    }
+}
 
 /* Latest Edition Section */
 .latest-edition-section {
@@ -305,6 +312,7 @@ body {
     margin: 0; /* Remove default margin */
     font-weight: bold; /* Make the label bold */
 }
+
 .category-btn {
     margin-top: 5px; /* Space between label and button */
     padding: 10px 20px; /* Button padding */
@@ -322,24 +330,76 @@ body {
     background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
 }
 
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    .banner-img {
-        max-width: 100%; 
-    }
-
-    .see-details-btn {
-        font-size: 16px;
-        padding: 8px 20px;
-    }
-
-    .book-categories {
-        gap: 20px; 
-    }
+/* Loading Spinner */
+.loader {
+    border: 8px solid #f3f3f3; /* Light gray */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite; /* Spin animation */
 }
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555; /* Dark background for tooltip */
+    color: #fff; /* White text for tooltip */
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the text */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+    opacity: 0; /* Hide the tooltip */
+    transition: opacity 0.3s; /* Fade effect */
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1; /* Show the tooltip on hover */
+}
+
+/* Responsive Typography */
+h1 {
+    font-size: 3rem; /* Base size */
+}
+
+h2 {
+    font-size: 2rem; /* Base size */
+}
+
+h3 {
+    font-size: 1.5rem; /* Base size */
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem; /* Smaller on mobile */
+    }
+
+    h2 {
+        font-size: 1.75rem; /* Smaller on mobile */
+    }
+
+    h3 {
+        font-size: 1.25rem; /* Smaller on mobile */
+    }
+}
 /* Email Form Section */
 #email {
     padding: 10px;
