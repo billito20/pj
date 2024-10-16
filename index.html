@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PJ Books</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar">
+        <p>Get 10% Off On Selected Books! Free Shipping on Orders Over $50</p>
+    </div>
+    <nav class="navbar">
+        <a href="#" class="logo">PJ Books</a>
+        <ul class="nav-links">
+            <li><a href="#new-collection">New Collection</a></li>
+            <li><a href="#libary">Library</a></li>
+            <li><a href="#Saved">Saved</a></li>
+        </ul>
+        <div class="navbar-icons">
+            <a href="#search" class="icon">
+                <img src="Assets\Magnifer.png" alt="Search">
+            </a>
+            <a href="#profile" class="icon">
+                <img src="Assets\User Circle.png" alt="Profile">
+            </a>
+            <a href="#basket" class="icon">
+                <img src="Assets\Vector.png" alt="Basket">
+            </a>
+            <button id="theme-toggle" class="icon">
+                <img src="Assets/light-bulb-icon.png" alt="Toggle Theme">
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="Assets\libary.png" alt="Library Image">
+        <div class="hero-text">
+            <h1>PJ BOOKS NEW EDITION</h1>
+            <p>Unlock a treasure trove of stories and knowledge. Explore our extensive collection and find your next favorite book today.</p>
+            <a href="#new-collection" class="btn">Explore</a>
+        </div>
+    </section>
+    
+
+    <!-- New Collection Section -->
+     
+    <section id="new-collection" class="new-collection">
+        <h2>New Collection</h2>
+        <p>Our latest edition, where stories tuck you in</p>
+        <div class="books-grid">
+            <!-- Books with Modal Trigger -->
+            <div class="book-item" onclick="openModal('Family and Nature', 'A fascinating book on family life and nature.')">
+                <img src="Assets\Picture3.png" alt="Family and Nature">
+                <div class="book-info">
+                    <p>Family and Nature</p>
+                    <p>Brandy Wine</p>
+                    <p>$500</p>
+                </div>
+            </div>
+            <div class="book-item" onclick="openModal('The Hobbit', 'A fantasy adventure about a hobbit and his journey.')">
+                <img src="Assets\Picture1.png" alt="The Hobbit">
+                <div class="book-info">
+                    <p>The Hobbit</p>
+                    <p>J.R.R Tolkien</p>
+                    <p>$400</p>
+                </div>
+            </div>
+            <div class="book-item" onclick="openModal('Death Comes for the Archbishop', 'A story about a bishop\'s journey to the west.')">
+                <img src="Assets\Picture4.png" alt="Death Comes for the Archbishop">
+                <div class="book-info">
+                    <p>Death Comes for the Archbishop</p>
+                    <p>Brandy Wine</p>
+                    <p>$500</p>
+                </div>
+            </div>
+            <div class="book-item" onclick="openModal('Bravo New World', 'A dystopian novel about a future society.')">
+                <img src="Assets\Picture9.png" alt="Bravo New World">
+                <div class="book-info">
+                    <p>Bravo New World</p>
+                    <p>Aldous Huxley</p>
+                    <p>$200</p>
+                </div>
+            </div>
+            <div class="book-item" onclick="openModal('SOUL', 'A deep exploration of human spirit and emotion.')">
+                <img src="Assets\Picture5.png" alt="SOUL">
+                <div class="book-info">
+                    <p>SOUL</p>
+                    <p>Olivia Wilson</p>
+                    <p>$300</p>
+                </div>
+            </div>
+            <div class="book-item" onclick="openModal('The Stand', 'An epic dark fantasy novel.')">
+                <img src="Assets\Picture6.png" alt="The Stand">
+                <div class="book-info">
+                    <p>The Stand</p>
+                    <p>Stephen King</p>
+                    <p>$400</p>
+                </div>
+            </div>
+            <div class="book-item" onclick="openModal('Lord Of The Flies', 'A tale of boys stranded on an island.')">
+                <img src="Assets\Picture7.png" alt="Lord Of The Flies">
+                <div class="book-info">
+                    <p>Lord Of The Flies</p>
+                    <p>William Golding</p>
+                    <p>$700</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+   
+
+    <!-- Modal for Book Details -->
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <!-- Latest Edition Section with Enhanced Carousel -->
+    <section class="latest-edition-section">
+            <div class="latest-banner">
+                <img src="Assets/Picture2.png" alt="Latest Edition Banner" class="banner-img">
+            </div>
+            <div class="banner-text">
+                <h2>Latest Edition</h2>
+                <p>Snuggle Up with a Story</p>
+                <button class="see-details-btn">See Details</button>
+            </div>
+        </section>
+        
+      
+        <div class="book-categories">
+    <div class="category-item">
+        <img src="Assets/image 130.png" alt="New Books">
+        <div class="overlay">
+            <p class="category-label">New Books</p>
+            <button class="category-btn">View All</button>
+        </div>
+    </div>
+    <div class="category-item">
+        <img src="Assets/image 127.png" alt="Novels">
+        <div class="overlay">
+            <p class="category-label">Novels</p>
+            <button class="category-btn">View All</button>
+        </div>
+    </div>
+    <div class="category-item">
+        <img src="Assets/image 126.png" alt="Textbooks">
+        <div class="overlay">
+            <p class="category-label">Textbooks</p>
+            <button class="category-btn">View All</button>
+        </div>
+    </div>
+    <div class="category-item">
+        <img src="Assets/image 124.png" alt="Kids">
+        <div class="overlay">
+            <p class="category-label">Kids</p>
+            <button class="category-btn">View All</button>
+        </div>
+    </div>
+</div>
+
+        
+      </section>
+      
+
+    
+   <!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Newsletter Signup -->
+        <div class="newsletter">
+            <h3>PJ Books</h3>
+            <p>Get new updates for upcoming products and best discounted items</p>
+            <form action="#">
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Categories -->
+        <div class="footer-links">
+            <h4>Categories</h4>
+            <ul>
+                <li><a href="#">Fiction</a></li>
+                <li><a href="#">Non-Fiction</a></li>
+                <li><a href="#">Novella</a></li>
+                <li><a href="#">Novel</a></li>
+                <li><a href="#">Science</a></li>
+                <li><a href="#">Children's Books</a></li>
+                <li><a href="#">More...</a></li>
+            </ul>
+        </div>
+
+        <!-- Product Info -->
+        <div class="footer-links">
+            <h4>Product</h4>
+            <ul>
+                <li><a href="#">Privacy & Policies</a></li>
+                <li><a href="#">Report A Problem</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-links">
+            <h4>Contact</h4>
+            <p>+2348098989890</p>
+            <p>PJBooks@gmail.com</p>
+            <p>200 Salamis Road 99450</p>
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-media">
+        <p>Follow us on social media</p>
+        <div class="social-icons">
+            <a href="#"><img src="Assets\image 136.png"><i class="fab fa-facebook-square"></i></a>
+            <a href="#"><img src="Assets\image 132.png"><i class="fab fa-instagram"></i></a>
+            <a href="#"><img src="Assets\image 133.png"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><img src="Assets\image 134.png"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><img src="Assets\image 135.png"><i class="fab fa-snapchat-square"></i></a>
+        </div>
+    </div>
+
+    <!-- Bottom Copyright and Links -->
+    <div class="footer-bottom">
+        <p>&copy; 2023 PJ Books Production</p>
+        <ul class="footer-bottom-links">
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- External font and icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

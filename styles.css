@@ -1,0 +1,670 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white; /* Light mode background */
+    color: black; /* Light mode text color */
+    font-family: Arial, sans-serif;
+}
+/* Header Styles */
+.header {
+    background-color: #222; /* Dark background for header */
+    color: #fff; /* White text for header */
+}
+
+.top-bar {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 5px;
+    background-color: #121111; /* Light gray background for the top bar */
+    color: #faf8f8; /* Dark text for visibility */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between logo and icons */
+    align-items: center;
+    padding: 15px;
+    background-color: #fff; /* White background for navbar */
+}
+
+.navbar .logo {
+    color: #222; /* Dark color for logo for contrast */
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0; /* Remove default margin */
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: #222; /* Dark color for nav links for contrast */
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ddd; /* Light gray background on hover */
+    border-radius: 5px;
+}
+
+/* New styles for icons in the navbar */
+.navbar-icons {
+    display: flex;
+    align-items: center; /* Center icons vertically */
+}
+
+.icon {
+    margin-left: 15px; /* Space between icons */
+    display: flex; /* Allows for proper centering of icons */
+}
+
+.icon img {
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+}
+
+#theme-toggle {
+    background: none; /* Remove button background */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Change cursor to pointer */
+    padding: 0; /* Remove padding */
+}
+
+/* Optional hover effects for icons */
+.icon:hover img {
+    opacity: 0.7; /* Slightly fade on hover */
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    color: #fff;
+    text-align: left;
+    max-width: 40%;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.hero-text .btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero-text .btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* New Collection Section */
+
+.new-collection {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.new-collection h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.new-collection p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px; 
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-item {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.book-item:hover {
+    transform: scale(1.05);
+}
+
+.book-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.book-info {
+    width: 100%; 
+    text-align: left; 
+}
+
+.book-item p {
+    margin: 0; 
+    font-size: 0.85rem; 
+    font-weight: normal; 
+    text-align: left; 
+    line-height: 1; 
+    padding-top: 2px; 
+}
+
+.book-item p + p {
+    margin-top: 3px; 
+}
+
+
+/* Latest Edition Section */
+.latest-edition-section {
+    padding: 20px;
+    text-align: center;             /* Center the text within the section */
+    background-color: #f5f5f5;      /* Background color for the section */
+}
+
+.latest-banner {
+    position: relative;
+    width: 100%;  
+    height: 400px;                  /* Set a fixed height for the banner */
+    overflow: hidden;               /* Hide overflow content */
+    display: flex;
+    justify-content: center;        /* Center the image within the div */
+    align-items: center;            /* Center the image vertically */
+}
+
+.banner-img {
+    width: 100%;                   /* Make the image full width */
+    height: 100%;                  /* Make the image full height */
+    object-fit: cover;             /* Maintain aspect ratio */
+    filter: brightness(0.7);       /* Dim the image slightly */
+}
+
+.banner-text {
+    margin-top: 20px;              /* Space between the banner and the text */
+}
+
+.banner-text h2 {
+    font-size: 2em;                /* Font size for the title */
+}
+
+.banner-text p {
+    font-size: 1.2em;              /* Font size for the description */
+}
+
+.see-details-btn {
+    padding: 10px 20px;            /* Button padding */
+    margin-top: 10px;              /* Space between text and button */
+    background-color: #007bff;     /* Button background color */
+    color: white;                  /* Button text color */
+    border: none;                  /* Remove border */
+    border-radius: 5px;           /* Rounded corners */
+    cursor: pointer;               /* Pointer cursor on hover */
+}
+
+.see-details-btn:hover {
+    background-color: #0056b3;     /* Darker shade on hover */
+}
+
+/* Styles for the book categories */
+.book-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.category-item {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.category-item img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;           /* Rounded corners for category images */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.category-item:hover img {
+    transform: scale(1.05);        /* Scale effect on hover */
+}
+
+/* View All Button Positioned Over Image */
+.category-item {
+    position: relative; /* Keep relative positioning for the overlay */
+    text-align: left; /* Align text to the left */
+    overflow: hidden; /* Hide overflow for neatness */
+}
+
+.overlay {
+    position: absolute; /* Position the overlay absolutely */
+    bottom: 10px; /* Position it at the bottom */
+    left: 10px; /* Position it at the left */
+   
+    padding: 10px; /* Padding around text */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.category-label {
+    color: #fff; /* White text color for the label */
+    margin: 0; /* Remove default margin */
+    font-weight: bold; /* Make the label bold */
+}
+.category-btn {
+    margin-top: 5px; /* Space between label and button */
+    padding: 10px 20px; /* Button padding */
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: #fff; /* Button text color */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* No border */
+    outline: none; /* No outline */
+    box-shadow: none; /* No box shadow */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
+}
+
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .banner-img {
+        max-width: 100%; 
+    }
+
+    .see-details-btn {
+        font-size: 16px;
+        padding: 8px 20px;
+    }
+
+    .book-categories {
+        gap: 20px; 
+    }
+}
+
+
+/* Email Form Section */
+#email {
+    padding: 10px;
+    margin-top: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#subscribe-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#subscribe-btn:hover {
+    background-color: #ff4500;
+}
+
+#message {
+    margin-top: 10px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #f5f5f5;
+    padding: 40px 20px;
+    color: #333;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.newsletter h3 {
+    font-size: 24px;
+    color: #000;
+}
+
+.newsletter p {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #666;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 200px;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #444;
+}
+
+.footer-links h4 {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links ul li a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-media p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+}
+
+.social-icons a {
+    font-size: 20px;
+    color: #666;
+}
+
+.social-icons a:hover {
+    color: #000;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-bottom-links li {
+    list-style: none;
+}
+
+.footer-bottom-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+/* Default styles */
+
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #121212; /* Dark background for body */
+    color: #e0e0e0; /* Light text color */
+}
+
+/* Dark mode for header and footer */
+.dark-mode .header,
+.dark-mode .footer {
+    background-color: #1e1e1e; /* Dark background for header/footer */
+    color: #e0e0e0; /* Light text color */
+}
+
+/* Dark mode for buttons */
+.dark-mode button {
+    background-color: #333; /* Dark button background */
+    color: #e0e0e0; /* Light button text */
+    border: 1px solid #555;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect in dark mode */
+.dark-mode button:hover {
+    background-color: #444; /* Slightly lighter background on hover */
+}
+
+/* Dark mode for modal content */
+.dark-mode .modal-content {
+    background-color: #2c2c2c; /* Dark modal background */
+    color: #e0e0e0; /* Light text in modal */
+    border-color: #444;
+}
+
+/* Dark mode for input fields */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: #333; /* Dark background for inputs */
+    color: #e0e0e0; /* Light text color */
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Dark mode for links */
+.dark-mode a {
+    color: #bb86fc; /* Light purple for links */
+}
+
+.dark-mode a:hover {
+    color: #e0e0e0; /* Light text color on hover */
+}
+
+/* Dark mode for table borders */
+.dark-mode table {
+    border-color: #444; /* Dark border for tables */
+}
+
+.dark-mode th,
+.dark-mode td {
+    border-color: #555; /* Dark border for table cells */
+    color: #e0e0e0; /* Light text color for table cells */
+}
+
+/* Additional dark mode styles for better visibility */
+.dark-mode .navbar ul li a {
+    color: #e0e0e0; /* Light color for nav links */
+}
+
+.dark-mode .navbar ul li a:hover {
+    background-color: #444; /* Darker background on hover */
+}
+
+/* Ensuring all elements have sufficient contrast */
+.dark-mode .hero-text h1 {
+    color: #ffffff; /* Bright white for main headings */
+}
+
+.dark-mode .hero-text p {
+    color: #d0d0d0; /* Light gray for paragraph text */
+}
+
+.dark-mode .footer-links ul li a {
+    color: #e0e0e0; /* Light color for footer links */
+}
+
+.dark-mode .footer-links ul li a:hover {
+    color: #bb86fc; /* Light purple on hover */
+}
+
+/* Ensure smooth transitions between themes */
+body, button, input, select, textarea {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
