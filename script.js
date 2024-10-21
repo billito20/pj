@@ -1,26 +1,32 @@
-// Dark mode toggle with transitions for smoother experience
+// Dark mode toggle with image change
 const themeToggle = document.getElementById('theme-toggle');
-document.body.classList.add('transition'); // Smooth transition for theme toggle
+const themeIcon = document.getElementById('theme-icon');
 
-// Function to update the theme toggle button text
-function updateThemeToggleText() {
-    themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+// Function to update the theme toggle icon
+function updateThemeIcon() {
+    if (document.body.classList.contains('dark-mode')) {
+        themeIcon.src = 'Assets/moon.png'; // Change to moon icon for dark mode
+        themeIcon.alt = 'Dark Mode';
+    } else {
+        themeIcon.src = 'Assets/sun.png'; // Change to sun icon for light mode
+        themeIcon.alt = 'Light Mode';
+    }
 }
 
 // Apply the saved theme on page load
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
-    updateThemeToggleText();
-} else {
-    updateThemeToggleText();
+    updateThemeIcon();
 }
 
 // Toggle theme and save the user's preference
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
     document.body.classList.toggle('dark-mode');
-    updateThemeToggleText();
+    updateThemeIcon();
     localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 });
+
 
 // Modal for book details with smoother transitions
 const modal = document.getElementById('book-modal');
@@ -58,11 +64,13 @@ window.addEventListener('click', (event) => {
 document.querySelector('.books-grid').addEventListener('click', function (e) {
     if (e.target.closest('.book-item')) {
         const bookItem = e.target.closest('.book-item');
-        const title = bookItem.querySelector('p:first-of-type').textContent;
-        const description = `A description for ${title}.`;  // You can modify this with a real description
+        const title = bookItem.dataset.title;
+        const description = bookItem.dataset.description;
         openModal(title, description);
     }
 });
+
+
 
 // Carousel functionality with improved performance and image preloading
 const carouselImages = ['Assets/image 130.png', 'Assets/image 127.png', 'Assets/image 126.png'];
