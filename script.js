@@ -1,14 +1,15 @@
 // Dark mode toggle with image change
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
+const navbar = document.querySelector('.navbar');
 
 // Function to update the theme toggle icon
 function updateThemeIcon() {
     if (document.body.classList.contains('dark-mode')) {
-        themeIcon.src = 'Assets/moon.png'; // Change to moon icon for dark mode
+        themeIcon.src = 'Assets/moon.png'; // Moon icon for dark mode
         themeIcon.alt = 'Dark Mode';
     } else {
-        themeIcon.src = 'Assets/sun.png'; // Change to sun icon for light mode
+        themeIcon.src = 'Assets/sun.png'; // Sun icon for light mode
         themeIcon.alt = 'Light Mode';
     }
 }
@@ -27,18 +28,46 @@ themeToggle.addEventListener('click', (e) => {
     localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 });
 
+// Smooth scroll for navbar links
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Shrink navbar on scroll
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-shrink');
+    } else {
+        navbar.classList.remove('navbar-shrink');
+    }
+});
 
 // Modal for book details with smoother transitions
 const modal = document.getElementById('book-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDescription = document.getElementById('modal-description');
 
-// Function to toggle modal visibility
+// Function to toggle modal visibility with animation
 function toggleModalVisibility(show) {
-    modal.style.opacity = show ? '1' : '0';
-    setTimeout(() => {
-        modal.style.display = show ? 'block' : 'none';
-    }, 300);
+    if (show) {
+        modal.style.opacity = '0';
+        modal.style.display = 'block';
+        setTimeout(() => {
+            modal.style.opacity = '1';
+            modal.classList.add('modal-animate'); // Add animation class
+        }, 10);
+    } else {
+        modal.classList.remove('modal-animate');
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
 }
 
 // Open modal with book details
@@ -70,80 +99,29 @@ document.querySelector('.books-grid').addEventListener('click', function (e) {
     }
 });
 
+// Loading spinner for transitions
+const spinner = document.createElement('div');
+spinner.className = 'spinner';
+document.body.appendChild(spinner);
+spinner.style.display = 'none'; // Hide initially
 
-
-// Carousel functionality with improved performance and image preloading
-const carouselImages = ['Assets/image 130.png', 'Assets/image 127.png', 'Assets/image 126.png'];
-let currentIndex = 0;
-const carouselImg = document.getElementById('carousel-img');
-
-// Function to update carousel image
-function updateCarousel() {
-    carouselImg.style.opacity = '0';
+function showSpinner() {
+    spinner.style.display = 'block';
     setTimeout(() => {
-        carouselImg.src = carouselImages[currentIndex];
-        carouselImg.style.opacity = '1';
+        spinner.style.opacity = '1';
+    }, 10);
+}
+
+function hideSpinner() {
+    spinner.style.opacity = '0';
+    setTimeout(() => {
+        spinner.style.display = 'none';
     }, 300);
 }
 
-// Preload carousel images for smoother transitions
-function preloadImages(images) {
-    images.forEach(image => {
-        const img = new Image();
-        img.src = image;
-    });
-}
-preloadImages(carouselImages);
-
-// Debounce function to prevent multiple quick clicks
-function debounce(func, delay = 200) {
-    let timeout;
-    return function () {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, arguments), delay);
-    };
-}
-
-// Event listeners for carousel buttons
-document.getElementById('next-btn').addEventListener('click', debounce(() => {
-    currentIndex = (currentIndex + 1) % carouselImages.length;
-    updateCarousel();
-}));
-
-document.getElementById('prev-btn').addEventListener('click', debounce(() => {
-    currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-    updateCarousel();
-}));
-
-// Email validation and subscription with real-time feedback
-const emailInput = document.getElementById('email');
-const message = document.getElementById('message');
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-emailInput.addEventListener('input', () => {
-    const trimmedEmail = emailInput.value.trim();
-    if (trimmedEmail && !emailRegex.test(trimmedEmail)) {
-        message.textContent = 'Please enter a valid email address.';
-        message.style.color = 'red';
-    } else {
-        message.textContent = '';
-    }
+// Show spinner during page load or modal open
+document.addEventListener('DOMContentLoaded', () => {
+    showSpinner();
+    setTimeout(hideSpinner, 1000); // Simulate loading delay
 });
 
-// Subscribe button with validation
-const subscribe = debounce(() => {
-    const trimmedEmail = emailInput.value.trim();
-    if (trimmedEmail === '') {
-        message.textContent = 'Email field cannot be empty.';
-        message.style.color = 'red';
-    } else if (!emailRegex.test(trimmedEmail)) {
-        message.textContent = 'Please enter a valid email address.';
-        message.style.color = 'red';
-    } else {
-        message.textContent = 'Thank you for subscribing!';
-        message.style.color = 'green';
-        emailInput.value = '';  // Clear the email input
-    }
-});
-
-document.getElementById('subscribe-btn').addEventListener('click', subscribe);
