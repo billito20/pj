@@ -21,17 +21,21 @@
         </ul>
         <div class="navbar-icons">
             <a href="#search" class="icon">
-                <img src="Assets\Magnifer.png" alt="Search">
+                <img src="Assets/Magnifer.png" alt="Search">
             </a>
             <a href="#profile" class="icon">
-                <img src="Assets\User Circle.png" alt="Profile">
+                <img src="Assets/User Circle.png" alt="Profile">
             </a>
             <a href="#basket" class="icon">
-                <img src="Assets\Vector.png" alt="Basket">
+                <img src="Assets/Vector.png" alt="Basket">
             </a>
-           
+            <!-- Dark Mode Icon -->
+            <a id="theme-toggle" href="#" class="icon">
+                <img id="theme-icon" src="Assets/mode.png" alt="Light Mode">
+            </a>
         </div>
     </nav>
+    
 
     <!-- Hero Section -->
     <section class="hero">
@@ -42,65 +46,62 @@
             <a href="#new-collection" class="btn">Explore</a>
         </div>
     </section>
-    
-
-    <!-- New Collection Section -->
-     
+ <!-- New Collection Section -->
     <section id="new-collection" class="new-collection">
         <h2>New Collection</h2>
         <p>Our latest edition, where stories tuck you in</p>
         <div class="books-grid">
             <!-- Books with Modal Trigger -->
-            <div class="book-item" onclick="openModal('Family and Nature', 'A fascinating book on family life and nature.')">
-                <img src="Assets\Picture3.png" alt="Family and Nature">
+            <div class="book-item" data-title="Family and Nature" data-description="A fascinating book on family life and nature.">
+                <img src="Assets/Picture3.png" alt="Family and Nature">
                 <div class="book-info">
                     <p>Family and Nature</p>
                     <p>Brandy Wine</p>
                     <p>$500</p>
                 </div>
             </div>
-            <div class="book-item" onclick="openModal('The Hobbit', 'A fantasy adventure about a hobbit and his journey.')">
-                <img src="Assets\Picture1.png" alt="The Hobbit">
+            <div class="book-item" data-title="The Hobbit" data-description="A fantasy adventure about a hobbit and his journey.">
+                <img src="Assets/Picture1.png" alt="The Hobbit">
                 <div class="book-info">
                     <p>The Hobbit</p>
                     <p>J.R.R Tolkien</p>
                     <p>$400</p>
                 </div>
             </div>
-            <div class="book-item" onclick="openModal('Death Comes for the Archbishop', 'A story about a bishop\'s journey to the west.')">
-                <img src="Assets\Picture4.png" alt="Death Comes for the Archbishop">
+            <div class="book-item" data-title="Death Comes for the Archbishop" data-description="A story about a bishop's journey to the west.">
+                <img src="Assets/Picture4.png" alt="Death Comes for the Archbishop">
                 <div class="book-info">
                     <p>Death Comes for the Archbishop</p>
                     <p>Brandy Wine</p>
                     <p>$500</p>
                 </div>
             </div>
-            <div class="book-item" onclick="openModal('Bravo New World', 'A dystopian novel about a future society.')">
-                <img src="Assets\Picture9.png" alt="Bravo New World">
+            <div class="book-item" data-title="Bravo New World" data-description="A dystopian novel about a future society.">
+                <img src="Assets/Picture9.png" alt="Bravo New World">
                 <div class="book-info">
                     <p>Bravo New World</p>
                     <p>Aldous Huxley</p>
                     <p>$200</p>
                 </div>
             </div>
-            <div class="book-item" onclick="openModal('SOUL', 'A deep exploration of human spirit and emotion.')">
-                <img src="Assets\Picture5.png" alt="SOUL">
+            <div class="book-item" data-title="SOUL" data-description="A deep exploration of human spirit and emotion.">
+                <img src="Assets/Picture5.png" alt="SOUL">
                 <div class="book-info">
                     <p>SOUL</p>
                     <p>Olivia Wilson</p>
                     <p>$300</p>
                 </div>
             </div>
-            <div class="book-item" onclick="openModal('The Stand', 'An epic dark fantasy novel.')">
-                <img src="Assets\Picture6.png" alt="The Stand">
+            <div class="book-item" data-title="The Stand" data-description="An epic dark fantasy novel.">
+                <img src="Assets/Picture6.png" alt="The Stand">
                 <div class="book-info">
                     <p>The Stand</p>
                     <p>Stephen King</p>
                     <p>$400</p>
                 </div>
             </div>
-            <div class="book-item" onclick="openModal('Lord Of The Flies', 'A tale of boys stranded on an island.')">
-                <img src="Assets\Picture7.png" alt="Lord Of The Flies">
+            <div class="book-item" data-title="Lord Of The Flies" data-description="A tale of boys stranded on an island.">
+                <img src="Assets/Picture7.png" alt="Lord Of The Flies">
                 <div class="book-info">
                     <p>Lord Of The Flies</p>
                     <p>William Golding</p>
@@ -109,6 +110,7 @@
             </div>
         </div>
     </section>
+    
     
    
 
