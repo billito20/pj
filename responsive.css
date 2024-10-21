@@ -1,0 +1,91 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Responsive Layouts */
+/* Base styles for large screens */
+.header, .footer {
+    padding: 20px;
+    text-align: center;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.book-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Medium screens (tablets, smaller laptops) */
+@media (max-width: 1024px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Small screens (phones, smaller tablets) */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+}
+
+/* Very small screens (phones in portrait mode) */
+@media (max-width: 480px) {
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text p {
+        font-size: 0.85rem;
+    }
+}

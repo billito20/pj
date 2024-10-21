@@ -1,16 +1,24 @@
 // Dark mode toggle with transitions for smoother experience
 const themeToggle = document.getElementById('theme-toggle');
 document.body.classList.add('transition'); // Smooth transition for theme toggle
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-    themeToggle.textContent = 'Light Mode';  
-} else {
-    themeToggle.textContent = 'Dark Mode';  
+
+// Function to update the theme toggle button text
+function updateThemeToggleText() {
+    themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
 }
 
+// Apply the saved theme on page load
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    updateThemeToggleText();
+} else {
+    updateThemeToggleText();
+}
+
+// Toggle theme and save the user's preference
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    updateThemeToggleText();
     localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 });
 
@@ -19,43 +27,67 @@ const modal = document.getElementById('book-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDescription = document.getElementById('modal-description');
 
-function openModal(title, description) {
-    modalTitle.textContent = title;
-    modalDescription.textContent = description;
-    modal.style.opacity = '0'; 
-    modal.style.display = 'block';
+// Function to toggle modal visibility
+function toggleModalVisibility(show) {
+    modal.style.opacity = show ? '1' : '0';
     setTimeout(() => {
-        modal.style.opacity = '1';
-        modal.focus(); // Set focus on the modal
-    }, 10);
-}
-
-function closeModal() {
-    modal.style.opacity = '0';
-    setTimeout(() => {
-        modal.style.display = 'none';  
+        modal.style.display = show ? 'block' : 'none';
     }, 300);
 }
 
+// Open modal with book details
+function openModal(title, description) {
+    modalTitle.textContent = title;
+    modalDescription.textContent = description;
+    toggleModalVisibility(true);
+}
+
+// Close modal
+function closeModal() {
+    toggleModalVisibility(false);
+}
+
+// Event listener to close the modal when clicking outside of it
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
         closeModal();
     }
 });
 
-// Carousel functionality with improved performance
+// Event delegation to handle modal open for any book item
+document.querySelector('.books-grid').addEventListener('click', function (e) {
+    if (e.target.closest('.book-item')) {
+        const bookItem = e.target.closest('.book-item');
+        const title = bookItem.querySelector('p:first-of-type').textContent;
+        const description = `A description for ${title}.`;  // You can modify this with a real description
+        openModal(title, description);
+    }
+});
+
+// Carousel functionality with improved performance and image preloading
 const carouselImages = ['Assets/image 130.png', 'Assets/image 127.png', 'Assets/image 126.png'];
 let currentIndex = 0;
 const carouselImg = document.getElementById('carousel-img');
 
+// Function to update carousel image
 function updateCarousel() {
     carouselImg.style.opacity = '0';
     setTimeout(() => {
         carouselImg.src = carouselImages[currentIndex];
-        carouselImg.style.opacity = '1'; 
+        carouselImg.style.opacity = '1';
     }, 300);
 }
 
+// Preload carousel images for smoother transitions
+function preloadImages(images) {
+    images.forEach(image => {
+        const img = new Image();
+        img.src = image;
+    });
+}
+preloadImages(carouselImages);
+
+// Debounce function to prevent multiple quick clicks
 function debounce(func, delay = 200) {
     let timeout;
     return function () {
@@ -64,6 +96,7 @@ function debounce(func, delay = 200) {
     };
 }
 
+// Event listeners for carousel buttons
 document.getElementById('next-btn').addEventListener('click', debounce(() => {
     currentIndex = (currentIndex + 1) % carouselImages.length;
     updateCarousel();
@@ -85,10 +118,11 @@ emailInput.addEventListener('input', () => {
         message.textContent = 'Please enter a valid email address.';
         message.style.color = 'red';
     } else {
-        message.textContent = ''; 
+        message.textContent = '';
     }
 });
 
+// Subscribe button with validation
 const subscribe = debounce(() => {
     const trimmedEmail = emailInput.value.trim();
     if (trimmedEmail === '') {
@@ -100,7 +134,7 @@ const subscribe = debounce(() => {
     } else {
         message.textContent = 'Thank you for subscribing!';
         message.style.color = 'green';
-        emailInput.value = '';  
+        emailInput.value = '';  // Clear the email input
     }
 });
 
