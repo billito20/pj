@@ -8,6 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Responsive Layouts */
@@ -34,6 +35,17 @@ body {
     display: block;
 }
 
+.navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Add some spacing between icons */
+}
+
+.navbar-icons .icon img {
+    width: 24px;
+    height: 24px;
+}
+
 /* Medium screens (tablets, smaller laptops) */
 @media (max-width: 1024px) {
     .navbar ul {
@@ -43,6 +55,7 @@ body {
 
     .books-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 15px; /* Reduce gap for medium screens */
     }
 }
 
@@ -95,12 +108,41 @@ body {
         transform: rotate(-45deg) translate(5px, -5px);
     }
 
-    .navbar ul {
-        flex-direction: column;
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
     }
 
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Adjust navbar icons for mobile view */
+    .navbar-icons {
+        display: flex;
+        justify-content: space-between;
+        width: auto;
+    }
+
+    /* Fix icon size on mobile */
+    .navbar-icons .icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    /* Adjust book grid for mobile */
     .books-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px; /* Reduce gap for mobile screens */
     }
 
     .hero-text h1 {
@@ -115,24 +157,41 @@ body {
 /* Very small screens (phones in portrait mode) */
 @media (max-width: 480px) {
 
+    /* Ensure the nav links appear centered on small screens */
     .nav-links {
         text-align: center;
     }
 
+    /* Make the book grid only show one book per row */
     .books-grid {
         grid-template-columns: repeat(1, 1fr);
+        gap: 5px; /* Smaller gap for very small screens */
     }
 
+    /* Center and adjust footer layout for mobile */
     .footer-container {
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
+    /* Adjust text sizes in the hero section */
     .hero-text h1 {
         font-size: 1.5rem;
     }
 
     .hero-text p {
         font-size: 0.85rem;
+    }
+
+    /* Adjust navbar layout */
+    .navbar-icons .icon img {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Reduce logo size for smaller screens */
+    .logo {
+        font-size: 1.2rem;
     }
 }
