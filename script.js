@@ -28,13 +28,15 @@ themeToggle.addEventListener('click', (e) => {
     localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 });
 
-// Smooth scroll for navbar links
-document.querySelectorAll('.nav-links a').forEach(anchor => {
+// Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
+        navLinks.classList.remove('active'); // Close the menu after a link is clicked
+        hamburger.classList.remove('active'); // Reset hamburger icon after clicking
     });
 });
 
@@ -82,6 +84,12 @@ function closeModal() {
     toggleModalVisibility(false);
 }
 
+// Add a close button inside the modal
+const closeModalBtn = document.createElement('button');
+closeModalBtn.innerText = 'Close';
+closeModalBtn.addEventListener('click', closeModal);
+modal.appendChild(closeModalBtn);
+
 // Event listener to close the modal when clicking outside of it
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
@@ -123,5 +131,14 @@ function hideSpinner() {
 document.addEventListener('DOMContentLoaded', () => {
     showSpinner();
     setTimeout(hideSpinner, 1000); // Simulate loading delay
+});
+
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); // Toggle the display of the menu
+    hamburger.classList.toggle('active'); // Toggle hamburger animation
 });
 
