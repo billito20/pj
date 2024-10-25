@@ -1,46 +1,46 @@
-// Dark mode toggle with image change
+// Dark mode toggle with icon change
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const navbar = document.querySelector('.navbar');
 
-// Function to update the theme toggle icon
+// Update theme icon based on current theme
 function updateThemeIcon() {
     if (document.body.classList.contains('dark-mode')) {
-        themeIcon.src = 'Assets/moon.png'; // Moon icon for dark mode
+        themeIcon.src = 'Assets/moon.png';
         themeIcon.alt = 'Dark Mode';
     } else {
-        themeIcon.src = 'Assets/sun.png'; // Sun icon for light mode
+        themeIcon.src = 'Assets/sun.png';
         themeIcon.alt = 'Light Mode';
     }
 }
 
-// Apply the saved theme on page load
+// Apply saved theme on page load
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
     updateThemeIcon();
 }
 
-// Toggle theme and save the user's preference
+// Toggle dark mode and save preference
 themeToggle.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault();
     document.body.classList.toggle('dark-mode');
     updateThemeIcon();
     localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 });
 
-// Smooth scroll for all anchor links
+// Smooth scroll for internal links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
-        navLinks.classList.remove('active'); // Close the menu after a link is clicked
-        hamburger.classList.remove('active'); // Reset hamburger icon after clicking
+        navLinks.classList.remove('active'); // Close menu after clicking link
+        hamburger.classList.remove('active'); // Reset hamburger icon
     });
 });
 
-// Shrink navbar on scroll
+// Navbar shrink effect on scroll
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('navbar-shrink');
@@ -49,26 +49,19 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Modal for book details with smoother transitions
+// Modal functionality for book details
 const modal = document.getElementById('book-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDescription = document.getElementById('modal-description');
 
-// Function to toggle modal visibility with animation
+// Toggle modal visibility with fade animation
 function toggleModalVisibility(show) {
     if (show) {
-        modal.style.opacity = '0';
         modal.style.display = 'block';
-        setTimeout(() => {
-            modal.style.opacity = '1';
-            modal.classList.add('modal-animate'); // Add animation class
-        }, 10);
+        setTimeout(() => modal.classList.add('modal-visible'), 10);
     } else {
-        modal.classList.remove('modal-animate');
-        modal.style.opacity = '0';
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
+        modal.classList.remove('modal-visible');
+        setTimeout(() => modal.style.display = 'none', 300);
     }
 }
 
@@ -84,23 +77,20 @@ function closeModal() {
     toggleModalVisibility(false);
 }
 
-// Add a close button inside the modal
-const closeModalBtn = document.createElement('button');
-closeModalBtn.innerText = 'Close';
-closeModalBtn.addEventListener('click', closeModal);
-modal.appendChild(closeModalBtn);
+// Close button inside modal
+document.querySelector('.close-btn').addEventListener('click', closeModal);
 
-// Event listener to close the modal when clicking outside of it
+// Close modal when clicking outside
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
         closeModal();
     }
 });
 
-// Event delegation to handle modal open for any book item
+// Open modal for clicked book item
 document.querySelector('.books-grid').addEventListener('click', function (e) {
-    if (e.target.closest('.book-item')) {
-        const bookItem = e.target.closest('.book-item');
+    const bookItem = e.target.closest('.book-item');
+    if (bookItem) {
         const title = bookItem.dataset.title;
         const description = bookItem.dataset.description;
         openModal(title, description);
@@ -111,34 +101,29 @@ document.querySelector('.books-grid').addEventListener('click', function (e) {
 const spinner = document.createElement('div');
 spinner.className = 'spinner';
 document.body.appendChild(spinner);
-spinner.style.display = 'none'; // Hide initially
 
 function showSpinner() {
     spinner.style.display = 'block';
-    setTimeout(() => {
-        spinner.style.opacity = '1';
-    }, 10);
+    setTimeout(() => spinner.style.opacity = '1', 10);
 }
 
 function hideSpinner() {
     spinner.style.opacity = '0';
-    setTimeout(() => {
-        spinner.style.display = 'none';
-    }, 300);
+    setTimeout(() => spinner.style.display = 'none', 300);
 }
 
-// Show spinner during page load or modal open
+// Show spinner during initial page load
 document.addEventListener('DOMContentLoaded', () => {
     showSpinner();
     setTimeout(hideSpinner, 1000); // Simulate loading delay
 });
 
-// Hamburger Menu Toggle
+// Hamburger menu toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
+// Toggle nav-links visibility and animate hamburger icon
 hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active'); // Toggle the display of the menu
-    hamburger.classList.toggle('active'); // Toggle hamburger animation
+    navLinks.classList.toggle('active'); // Show/hide menu
+    hamburger.classList.toggle('active'); // Animate hamburger icon
 });
-
