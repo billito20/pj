@@ -599,9 +599,9 @@ h3 {
 .social-icons {
     display: flex;
     justify-content: left;
-    width: 2%; /* Adjust size as needed */
-    height: 30px;
-    gap: 1px;
+    width: 12px; /* Adjust size as needed */
+    height: 40px;
+    gap: 3px;
     
     
 }
