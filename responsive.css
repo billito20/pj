@@ -66,7 +66,7 @@ body {
     .nav-links {
         display: none; /* Hidden by default */
         position: absolute;
-        top: 60px; /* Below the navbar */
+        top: 10px; /* Below the navbar */
         right: 0;
         width: 100%;
         flex-direction: column;
@@ -76,7 +76,7 @@ body {
     }
 
     .nav-links.active {
-        display: flex; /* Show links when active */
+        display: none; /* Show links when active */
     }
 
     .hamburger {

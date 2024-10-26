@@ -31,12 +31,16 @@ body {
     justify-content: space-between; /* Space between logo and icons */
     align-items: center;
     padding: 15px;
+    font-size: 18px;
+    font-weight: 600px;
     background-color: #fff; /* White background for navbar */
 }
 
 .navbar .logo {
     color: #222; /* Dark color for logo for contrast */
-    font-size: 1.5rem;
+    font-size: 30px;
+    font-weight: 800px;
+
     text-decoration: none;
 }
 
@@ -595,9 +599,9 @@ h3 {
 .social-icons {
     display: flex;
     justify-content: left;
-    width: -5px; /* Adjust size as needed */
+    width: 2%; /* Adjust size as needed */
     height: 30px;
-    gap: 10px;
+    gap: 1px;
     
     
 }
