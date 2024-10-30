@@ -118,12 +118,25 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(hideSpinner, 1000); // Simulate loading delay
 });
 
-// Hamburger menu toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
+
+// Hide menu by default
+navLinks.classList.remove('active'); // Ensure menu is hidden initially
+console.log("Menu hidden by default");
 
 // Toggle nav-links visibility and animate hamburger icon
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active'); // Show/hide menu
     hamburger.classList.toggle('active'); // Animate hamburger icon
+    console.log("Hamburger clicked, active class toggled");
+});
+
+// Close menu if a link is clicked
+navLinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+        navLinks.classList.remove('active'); // Hide menu
+        hamburger.classList.remove('active'); // Reset hamburger icon
+        console.log("Link clicked, menu closed");
+    }
 });

@@ -61,12 +61,30 @@ body {
 
 /* Small screens (phones, smaller tablets) */
 @media (max-width: 768px) {
-
-    /* Hide the nav-links on mobile and show hamburger icon */
+    .category-item {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        width: 420px;
+        height: 392px;
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+    
+    .footer_cat {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* Hide nav-links on mobile; show hamburger icon */
     .nav-links {
-        display: none; /* Hidden by default */
+        display: none;
         position: absolute;
-        top: 10px; /* Below the navbar */
+        top: 50px; /* Adjust as needed */
         right: 0;
         width: 100%;
         flex-direction: column;
@@ -74,11 +92,10 @@ body {
         padding: 20px;
         z-index: 100;
     }
-
-    .nav-links.active {
-        display: none; /* Show links when active */
-    }
-
+    /* Display nav-links when active */
+.nav-links.active {
+    display: flex;
+}
     .hamburger {
         display: flex; /* Show hamburger icon on mobile */
         flex-direction: column;
@@ -86,8 +103,9 @@ body {
         width: 25px;
         height: 20px;
         cursor: pointer;
+        z-index: 101; /* Keep it above nav-links */
     }
-
+    
     .hamburger span {
         display: block;
         width: 100%;
@@ -95,64 +113,102 @@ body {
         background-color: #333;
         transition: all 0.3s ease;
     }
-
+    
     .hamburger.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
-
+    
     .hamburger.active span:nth-child(2) {
         opacity: 0; /* Hide middle line */
     }
-
+    
     .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
     }
-
+    
     .navbar {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
         padding: 10px 15px;
     }
-
+    
     .navbar ul {
         flex-direction: column;
         align-items: center;
         padding: 0;
         margin: 0;
     }
-
+    
     /* Adjust navbar icons for mobile view */
     .navbar-icons {
         display: flex;
         justify-content: space-between;
         width: auto;
     }
-
-    /* Fix icon size on mobile */
+    
+    /* Only show the search icon next to nav-links */
     .navbar-icons .icon img {
         width: 20px;
         height: 20px;
     }
-
+    
     .logo {
         font-size: 1.5rem;
+        order: 1;
+        margin-left: 10px;
     }
-
-    /* Adjust book grid for mobile */
-    .books-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px; /* Reduce gap for mobile screens */
-    }
-
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-
-    .hero-text p {
-        font-size: 1rem;
+    
+    /* Responsive layout adjustments */
+    @media (max-width: 768px) {
+        .navbar {
+            justify-content: flex-start;
+        }
+    
+        .hamburger {
+            margin-right: 10px;
+            order: 1;
+        }
+    
+        .logo {
+            font-size: 1.5rem;
+            order: 2;
+        }
+    
+        .navbar-icons {
+            order: 3;
+        }
+    
+        .books-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px; /* Reduce gap for mobile screens */
+        }
+    
+        .book-categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 0 auto;
+        }
+    
+        .category-item {
+            width: 100%;
+        }
+    
+        .category-item img {
+            width: 100%;
+        }
+    
+        .hero-text h1 {
+            font-size: 2rem;
+        }
+    
+        .hero-text p {
+            font-size: 1rem;
+        }
     }
 }
+
 
 /* Very small screens (phones in portrait mode) */
 @media (max-width: 480px) {
@@ -189,7 +245,32 @@ body {
         width: 18px;
         height: 18px;
     }
-
+    .footer_cat{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;    
+        flex-direction: column;
+       }
+       
+.category-item {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+   /* width: 200px;*/
+    height: 260px;
+    flex: 1 1 100%;
+    max-width: 100%;
+    
+    
+}
+.book-categories {
+    padding: 40px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
     /* Reduce logo size for smaller screens */
     .logo {
         font-size: 1.2rem;

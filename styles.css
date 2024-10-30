@@ -270,11 +270,11 @@ body {
 
 /* Styles for the book categories */
 .book-categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 24px;
     margin-top: 40px;
-    
+    flex-wrap: wrap;
    
 }
 
@@ -284,12 +284,15 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
-    left: 5px;
+   /* width: 330px; */
+    height: 392px;
+    flex: 1 1 calc(25%-20px);
+    max-width: calc(25%-20px);
+    
 }
 
 .category-item img {
-    width: 100%;
-    max-width: 200px;
+    width: 350px;
     height: auto;
     border-radius: 8px;           /* Rounded corners for category images */
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
@@ -308,7 +311,7 @@ body {
 
 .overlay {
     position: absolute; /* Position the overlay absolutely */
-    bottom: 10px; /* Position it at the bottom */
+    bottom: 40px; /* Position it at the bottom */
     left: 10px; /* Position it at the left */
    
     padding: 10px; /* Padding around text */
@@ -599,16 +602,17 @@ h3 {
 .social-icons {
     display: flex;
     justify-content: left;
-    width: 12px; /* Adjust size as needed */
+   
     height: 40px;
     gap: 3px;
     
     
 }
 
-.social-icons a {
+.social-icons img {
     font-size: 20px;
     color: #666;
+    width: 40px;
     
 }
 
@@ -674,14 +678,14 @@ h3 {
 
 /* Dark mode styles */
 .dark-mode {
-    background-color: #121212; /* Dark background for body */
+    background-color: #f4f4f4; /* Dark background for body */
     color: #e0e0e0; /* Light text color */
 }
 
 /* Dark mode for header and footer */
 .dark-mode .header,
 .dark-mode .footer {
-    background-color: #1e1e1e; /* Dark background for header/footer */
+    background-color: #f9f7f7; /* Dark background for header/footer */
     color: #e0e0e0; /* Light text color */
 }
 
