@@ -134,6 +134,7 @@ body {
     }
     
     .navbar ul {
+        display: none;
         flex-direction: column;
         align-items: center;
         padding: 0;
