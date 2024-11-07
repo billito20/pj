@@ -104,6 +104,8 @@ body {
         height: 20px;
         cursor: pointer;
         z-index: 101; /* Keep it above nav-links */
+        
+        
     }
     
     .hamburger span {
@@ -143,7 +145,7 @@ body {
     
     /* Adjust navbar icons for mobile view */
     .navbar-icons {
-        display: flex;
+        display: none;
         justify-content: space-between;
         width: auto;
     }
